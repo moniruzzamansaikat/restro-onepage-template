@@ -6,9 +6,18 @@ menu.addEventListener('click', () => {
   navbar.classList.toggle('active')
 })
 
+function loader() {
+  document.querySelector('.loader-container').classList.add('fade-out')
+}
+
+function fadeOut() {
+  setInterval(loader, 2000)
+}
+
+window.onload = fadeOut;
+
 let sections = document.querySelectorAll('section')
 let navLinks = document.querySelectorAll('header .navbar a')
-
 
 window.addEventListener('scroll', () => {
   menu.classList.remove('fa-times')
@@ -23,7 +32,7 @@ window.addEventListener('scroll', () => {
     if (top >= offset && top < offset + height) {
       navLinks.forEach(nL => {
         nL.classList.remove('active')
-        document.querySelector(`header .navbar a[href*="${id}"]`).classList.add('active')
+        document.querySelector(`header .navbar a[href*="${id}"]`)?.classList.add('active')
       })
     }
   })
